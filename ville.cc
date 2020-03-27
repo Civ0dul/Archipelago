@@ -14,21 +14,10 @@ using namespace std;
 
 typedef vector<Noeud> Web;
 
-<<<<<<< HEAD
-=======
-bool check_link (Noeud noeud1, Noeud noeud2);
-bool check_identical_uid (unsigned int uid);
-bool check_link_vacuum (Links lien);
-bool check_max_link (Noeud noeud);
-bool check_multiple_same_link (Links lien);
-
-
->>>>>>> 42649b540cb0476014f4d2e95bda5cab248f8dd1
 
 class Ville{
 public:
 	Ville(unsigned int nbrL=0, unsigned nbrT=0, unsigned int nbrP=0);
-<<<<<<< HEAD
 	void AddNode (Noeud noeud);
 	void AddLink (Liste link);
 	Web GetN () const;
@@ -36,15 +25,6 @@ public:
 	
 private:
 	vector<Liste> liens;
-=======
-	void addNode (Noeud noeud);
-	void addLink (Links link);
-	Web getN () const;
-	vector<Links> getLink() const;
-	
-private:
-	vector<Links> liens;
->>>>>>> 42649b540cb0476014f4d2e95bda5cab248f8dd1
 	Web N;
 	unsigned int nombreL;
 	unsigned int nombreT;
@@ -60,7 +40,6 @@ Ville::Ville(unsigned int nbrL, unsigned nbrT, unsigned int nbrP)
 
 Ville v;
 
-<<<<<<< HEAD
 Web Ville::GetN () const {return N;}
 vector<Liste> Ville::GetLiens () const {return liens;}	
 
@@ -70,25 +49,10 @@ void Ville::AddNode(Noeud noeud) {
 }
 
 void Ville::AddLink(Liste link) {
-=======
-Web Ville::getN () const {return N;}
-
-vector<Links> Ville::getLink() const { return liens; }	
-
-void Ville::addNode(Noeud noeud) {
-	if (check_identical_uid(noeud.getUid())) exit(1);
-	N.push_back(noeud);
-}
-
-void Ville::addLink(Links link) {
-	if (check_link_vacuum(link)) exit(1);
-	if (check_multiple_same_link(link)) exit(1);
->>>>>>> 42649b540cb0476014f4d2e95bda5cab248f8dd1
 	liens.push_back(link);
 }
 
 
-<<<<<<< HEAD
 //-----------Vérifications---------------
 
 bool check_node_node_superposition(Noeud noeud) const {
@@ -106,7 +70,7 @@ bool check_node_node_superposition(Noeud noeud) const {
 		dx = x1-x2;
 		dy = y1-y2;
 		distance = sqrt(dx*dx + dy*dy);
-		if(distance < r1+r2+dist_min) {
+		if(distance <= r1+r2) {
 			resultat = false;
 			cout << error::node_node_superposition(noeud.GetUid(), element.GetUid());
 		}
@@ -121,53 +85,24 @@ bool check_node_link_superposition(Noeud noeud) {
 	y1 = noeud.GetCentre().GetY();
 	r1 = sqrt(noeud.GetCapacity());
 	
-	for(auto& liste_liens : v.GetLiens()) {
-		for(auto& elements : liste_liens) {
+	for(auto& element : v.GetN()) {
+		double x2,x3,y2,y3,dx,dy,p;
+		x2 = element.GetCentre().GetX();
+		y2 = element.GetCentre().GetY();
+
+		for(auto uid : element.GetV()) {
+			x3 = uid.GetCentre().GetX();
+			y3 = uid.GetCentre().GetY();
+		}
+		
+		dx = x2-x3;
+		dy = y2-y3;
+		p = dy/dx;
+	
+	
 			
 			
 				
-=======
-bool check_identical_uid (unsigned int uid) {
-	for (auto i : v.getN()){
-		if (i.getUid() == uid){
-			cout << error::identical_uid(uid);
-			return true;
-		}
-	}
-	return false;
-}
-	
-bool check_link_vacuum (Links lien) {
-	for (auto i : v.getN()){
-		if (lien[1] == i.getUid()){
-			return false;
-		}
-	}
-	cout << error::link_vacuum(lien[1]);
-	return true;
-}
-	
-bool check_max_link (Noeud noeud) {
-	if (noeud.getType() == Logement and noeud.getV().size() >= max_link)
-	{ 
-		return false; 
-	}
-	return true;
-}
-
-bool check_multiple_same_link (Links lien) {
-	for (auto i : v.getLink()){
-		if (lien[0] == i[1] and lien[1] == i[0]){
-			cout << error::multiple_same_link(i[0], i[1]);
-			return true;
-		}
-	}
-	return false;
-}
-	
-
-					 
->>>>>>> 42649b540cb0476014f4d2e95bda5cab248f8dd1
 	
 
 
@@ -209,11 +144,7 @@ void decodage_ligne(string line){
 
 	case HOUSING: 
 		type = Logement;
-<<<<<<< HEAD
 		v.AddNode(analyse_ligne_noeud(line, type));
-=======
-		v.addNode(analyse_ligne_noeud(line, type));
->>>>>>> 42649b540cb0476014f4d2e95bda5cab248f8dd1
 		++i;
 		if(i == total) etat=NB1 ;
 	    break;
@@ -226,11 +157,7 @@ void decodage_ligne(string line){
 
 	case TRANSPORT:
 		type = Transport;
-<<<<<<< HEAD
 		v.AddNode(analyse_ligne_noeud(line, type));
-=======
-		v.addNode(analyse_ligne_noeud(line, type));
->>>>>>> 42649b540cb0476014f4d2e95bda5cab248f8dd1
 		++i;
 		if(i == total) etat=NB2 ;
 	    break;
@@ -243,11 +170,7 @@ void decodage_ligne(string line){
 
 	case PRODUCTION: 
 		type = Production;
-<<<<<<< HEAD
 		v.AddNode(analyse_ligne_noeud(line, type));
-=======
-		v.addNode(analyse_ligne_noeud(line, type));
->>>>>>> 42649b540cb0476014f4d2e95bda5cab248f8dd1
 		++i;
 		if(i == total) etat=NB3 ;
 	    break;
@@ -259,11 +182,7 @@ void decodage_ligne(string line){
 		break;
 
 	case LINK:
-<<<<<<< HEAD
 		v.AddLink(analyse_ligne_link(line));
-=======
-		v.addLink(analyse_ligne_link(line));
->>>>>>> 42649b540cb0476014f4d2e95bda5cab248f8dd1
 		++i;
 		if(i == total) etat=FIN ;
 	    break;
