@@ -25,7 +25,7 @@ public:
 	unsigned int getCapacity () const;
 	unsigned int getUid () const;
 	NodeType getType () const;
-	Liste getV () const;
+	Links getV () const;
 	
 private:
 	
