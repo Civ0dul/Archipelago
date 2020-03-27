@@ -8,7 +8,7 @@
 using namespace std;
 
 enum NodeType {Logement, Transport, Production};
-typedef vector<unsigned int> Liste;
+typedef vector<unsigned int> Links;
 
 
 
@@ -20,24 +20,24 @@ public:
 	Noeud(NodeType type_, unsigned int uid_, double x_,
 		  double y_, unsigned int capacity_);
 	
-	void AddLink (unsigned int uid);
-	Point GetCentre () const;
-	unsigned int GetCapacity () const;
-	unsigned int GetUid () const;
-	NodeType GetType () const;
-	Liste GetV () const;
+	void addLink (unsigned int uid);
+	Point getCentre () const;
+	unsigned int getCapacity () const;
+	unsigned int getUid () const;
+	NodeType getType () const;
+	Liste getV () const;
 	
 private:
 	
 	NodeType type;
 	unsigned int uid;
-	Liste V;
+	Links V;
 	Point c;
 	unsigned int capacity;
 	
 };
 
 Noeud analyse_ligne_noeud(string ligne, NodeType type);
-Liste analyse_ligne_link(string ligne);
+Links analyse_ligne_link(string ligne);
 	
 #endif
