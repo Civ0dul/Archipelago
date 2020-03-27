@@ -24,9 +24,9 @@ class Ville{
 public:
 	Ville(unsigned int nbrL=0, unsigned nbrT=0, unsigned int nbrP=0);
 	void addNode (Noeud noeud);
-	void addLink (Liste link);
+	void addLink (Links link);
 	Web getN () const;
-	vector<Links> getLiens () const;
+	vector<Links> getLinks () const;
 	
 private:
 	vector<Links> liens;
@@ -46,7 +46,7 @@ Ville::Ville(unsigned int nbrL, unsigned nbrT, unsigned int nbrP)
 Ville v;
 
 Web Ville::getN () const {return N;}
-vector<Links> Ville::getLiens () const {return liens;}	
+vector<Links> Ville::getLinks () const {return liens;}	
 
 void Ville::addNode(Noeud noeud) {
 	if (check_identical_uid(noeud.getUid())) exit(1);
