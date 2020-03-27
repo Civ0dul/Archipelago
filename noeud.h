@@ -10,6 +10,9 @@ using namespace std;
 enum NodeType {Logement, Transport, Production};
 typedef vector<unsigned int> Links;
 
+
+
+
 class Noeud {
 	
 public:

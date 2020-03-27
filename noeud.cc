@@ -52,7 +52,6 @@ bool verificationLien(unsigned int id1, unsigned int id2){
 	
 }
 
-
 Links analyse_ligne_link(string ligne){
 	istringstream data(ligne);
 	unsigned int uid1, uid2;
@@ -60,7 +59,7 @@ Links analyse_ligne_link(string ligne){
 	if (verificationLien(uid1, uid2)){
 		return (Links {uid1, uid2});
 	}
-	else {cout << "exit\n"; exit(1);}
+	else exit(1);
 }
 
 
