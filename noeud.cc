@@ -57,7 +57,7 @@ Links analyse_ligne_link(string ligne){
 	unsigned int uid1, uid2;
 	data >> uid1 >> uid2;
 	if (verificationLien(uid1, uid2)){
-		return (Links (uid1, uid2));
+		return (Links {uid1, uid2});
 	}
 	else exit(1);
 }
