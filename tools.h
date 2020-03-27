@@ -6,8 +6,11 @@ class Point {
 	Point(double x,double y)
 	: x(x), y(y)
 	{}
+<<<<<<< HEAD
 	double GetX () const {return x;}
 	double GetY () const {return y;}
+=======
+>>>>>>> 42649b540cb0476014f4d2e95bda5cab248f8dd1
 	
 	private:
 	double x,y;
