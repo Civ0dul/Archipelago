@@ -9,8 +9,6 @@
 
 using namespace std;
 
-static vector<Noeud> ensemble;
-
 Noeud::Noeud(NodeType type_, unsigned int uid_, double x_, 
 			 double y_, unsigned int capacity_)
 : type(type_), uid(uid_), c(x_,y_), capacity(capacity_)
@@ -59,7 +57,7 @@ Links analyse_ligne_link(string ligne){
 	unsigned int uid1, uid2;
 	data >> uid1 >> uid2;
 	if (verificationLien(uid1, uid2)){
-		return (vector<unsigned int> (uid1, uid2));
+		return (Links (uid1, uid2));
 	}
 	else exit(1);
 }
@@ -68,12 +66,12 @@ Links analyse_ligne_link(string ligne){
 
 
 	
-void Noeud::AddLink (unsigned int uid) {
+void Noeud::addLink (unsigned int uid) {
 	V.push_back(uid);
 }
 
-Point Noeud::GetCentre () const {return c;}
-unsigned int Noeud::GetCapacity () const {return capacity;}
-unsigned int Noeud::GetUid () const {return uid;}
-NodeType Noeud::GetType () const {return type;}
-Links Noeud::GetV () const {return V;}
+Point Noeud::getCentre () const {return c;}
+unsigned int Noeud::getCapacity () const {return capacity;}
+unsigned int Noeud::getUid () const {return uid;}
+NodeType Noeud::getType () const {return type;}
+Links Noeud::getV () const {return V;}
